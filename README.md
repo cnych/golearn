@@ -12,3 +12,9 @@ getting started golang
 1. 进入`scorpio`目录，执行`setup-gopath.sh`脚本，该脚本会把当前目录和`stardust-go`项目设置为`gopath`
 2. 提交代码之前先手动执行`format-src.sh`脚本，该脚本会用`golang`的标准方式格式化代码
 3. 也可以直接在`git`本地的`pre-commit`的`hook`文件中加上上面格式化的脚本，避免每次手动执行
+
+## 运行
+1. 可以在`scorpio`根目录中新建一个`bin`文件夹
+2. 进入`bin`文件夹，执行命令`go build scorpio/mathapp`
+3. 在`bin`目录下面会生成一个`mathapp`的可执行文件，执行命令`./mathapp`即可得到运行结果
+4. 也可以直接在`scorpio`根目录下面直接执行命令`go run src/scorpio/mathapp/main.go`得到运行结果
