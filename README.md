@@ -1,5 +1,4 @@
-# golearn
-getting started golang
+# learn golang
 
 ## IDE
 推荐使用`Gogland`或者`IntelliJ IDEA`安装`golang`插件，其他的`sublime text`或者`vs code`都可以，选择自己熟悉的开发工具就OK~
@@ -22,23 +21,37 @@ getting started golang
 
 ### 指针
 
-代码路径：`src/scorpio/complextype/pointers.go`
+代码路径：[pointers.go](https://github.com/cnych/golearn/blob/master/scorpio/src/scorpio/complextype/pointers.go)
 
-Go 具有指针。 指针保存了变量的内存地址。
+`Go` 具有指针。 指针保存了变量的内存地址。
 
-类型 *T 是指向类型 T 的值的指针。其零值是 `nil`。
+类型 `*T` 是指向类型 `T` 的值的指针。其零值是 `nil`。
 ```go
     var p *int
 ```
-& 符号会生成一个指向其作用对象的指针。
-```
-i := 42
-p = &i
+`&` 符号会生成一个指向其作用对象的指针。
+```go
+    i := 42
+    p = &i
 ```
 * 符号表示指针指向的底层的值。
-
-fmt.Println(*p) // 通过指针 p 读取 i
-*p = 21         // 通过指针 p 设置 i
+```go
+    fmt.Println(*p) // 通过指针 p 读取 i
+    *p = 21         // 通过指针 p 设置 i
+```
 这也就是通常所说的“间接引用”或“非直接引用”。
 
-与 C 不同，Go 没有指针运算。
+与 `C` 不同，`Go` 没有指针运算。
+
+
+### 结构体
+
+代码路径：[structs.go](https://github.com/cnych/golearn/blob/master/scorpio/src/scorpio/complextype/structs.go)
+
+一个结构体（`struct`）就是一个字段的集合。
+
+（而 `type` 的含义跟其字面意思相符。）
+
+结构体字段使用点号来访问。
+
+结构体字段可以通过结构体指针来访问，通过指针间接的访问是透明的。
