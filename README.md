@@ -9,7 +9,7 @@ getting started golang
 2. `stardust-go`工程是项目用到到所有公共代码，包括第三方包(包括用`go get`命令安装)都放置在该工程下面
 
 ## 安装
-1. 进入`scorpio`目录，执行`setup-gopath.sh`脚本，该脚本会把当前目录和`stardust-go`项目设置为`gopath`
+1. 进入`scorpio`目录，执行`setup-gopath.sh`脚本，该脚本会把当前目录和`stardustx`项目设置为`gopath`
 2. 提交代码之前先手动执行`format-src.sh`脚本，该脚本会用`golang`的标准方式格式化代码
 3. 也可以直接在`git`本地的`pre-commit`的`hook`文件中加上上面格式化的脚本，避免每次手动执行
 
@@ -18,3 +18,27 @@ getting started golang
 2. 进入`bin`文件夹，执行命令`go build scorpio/mathapp`
 3. 在`bin`目录下面会生成一个`mathapp`的可执行文件，执行命令`./mathapp`即可得到运行结果
 4. 也可以直接在`scorpio`根目录下面直接执行命令`go run src/scorpio/mathapp/main.go`得到运行结果
+
+
+### 指针
+
+代码路径：`src/scorpio/complextype/pointers.go`
+
+Go 具有指针。 指针保存了变量的内存地址。
+
+类型 *T 是指向类型 T 的值的指针。其零值是 `nil`。
+```go
+    var p *int
+```
+& 符号会生成一个指向其作用对象的指针。
+```
+i := 42
+p = &i
+```
+* 符号表示指针指向的底层的值。
+
+fmt.Println(*p) // 通过指针 p 读取 i
+*p = 21         // 通过指针 p 设置 i
+这也就是通常所说的“间接引用”或“非直接引用”。
+
+与 C 不同，Go 没有指针运算。
