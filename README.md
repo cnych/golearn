@@ -60,6 +60,8 @@
 
 ### 数组
 
+代码路径：[array.go](https://github.com/cnych/golearn/blob/master/scorpio/src/scorpio/complextype/array.go)
+
 类型`[n]T`是一个`n`个类型为`T`的值的数组。
 
 #### 表达式
