@@ -26,9 +26,9 @@ _testmain.go
 
 # Project
 scorpio/bin/
-stardust-go/bin/
+stardustx/bin/
 scorpio/pkg/
-stardust-go/pkg/
+stardustx/pkg/
 
 
 *.iml
