@@ -115,3 +115,14 @@
 
 参阅`slice`文章：[使用和内幕](http://golang.org/doc/articles/slices_usage_and_internals.html)
 
+## interface
+代码路径：[interfaces.go](https://github.com/cnych/golearn/blob/master/scorpio/src/scorpio/interfaceapp/main.go)
+
+接口是什么？`Go`语言没有类和几成的概念。但是`Go`语言有非常灵活的接口概念，通过它可以实现很多面向对象的特性。
+接口提供了一种方式来说明对象的行为。
+接口定义了一组方法集，但是这些方法不包含（实现代码）：它们没有被实现（它们是抽象的）。接口里也不能包含变量。
+
+## grpc
+> 参考资料: [grpc](http://www.jianshu.com/p/774b38306c30)
+
+
