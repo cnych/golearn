@@ -123,6 +123,10 @@
 接口定义了一组方法集，但是这些方法不包含（实现代码）：它们没有被实现（它们是抽象的）。接口里也不能包含变量。
 
 ## grpc
-> 参考资料: [grpc](http://www.jianshu.com/p/774b38306c30)
+> 参考资料: [grpc](http://www.jianshu.com/p/774b38306c30) [grpc-api](https://xiequan.info/go%E4%BD%BF%E7%94%A8grpc%E4%B8%8Eprotocol-buffers%E6%9E%84%E5%BB%BA%E9%AB%98%E6%80%A7%E8%83%BDapi-%E6%9C%8D%E5%8A%A1/)
 
+`gRPC`是一个高性能、通用的开源RPC框架，其由`Google`主要面向移动应用开发并基于`HTTP/2`协议标准而设计，基于`ProtoBuf(Protocol Buffers)`序列化协议开发，且支持众多开发语言。
+`gRPC`提供了一种简单的方法来精确地定义服务和为`iOS`、`Android`和后台支持服务自动生成可靠性很强的客户端功能库。客户端充分利用高级流和链接功能，从而有助于节省带宽、降低的`TCP`链接次数、节省`CPU`使用、和电池寿命。
+我们可以从这里[http://www.grpc.io/blog/principles](http://www.grpc.io/blog/principles) `gRPC`的动机和设计原则。
 
+![gRPC](https://o6rr5e4by.qnssl.com/wp-content/uploads/2016/10/1-X7I-IyhPdnNCsYJlm1U0Hw.jpeg)
