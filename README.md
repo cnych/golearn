@@ -5,10 +5,10 @@
 
 ## 代码结构
 1. `scorpio`工程是核心代码，与业务相关的所有代码都放置在该工程下面
-2. `stardustx`工程是项目用到到所有公共代码，包括第三方包(包括用`go get`命令安装)都放置在该工程下面
+2. `starjazz-go`工程是项目用到到所有公共代码，包括第三方包(包括用`go get`命令安装)都放置在该工程下面
 
 ## 安装
-1. 进入`scorpio`目录，执行`setup-gopath.sh`脚本，该脚本会把当前目录和`stardustx`项目设置为`gopath`
+1. 进入`scorpio`目录，执行`setup-gopath.sh`脚本，该脚本会把当前目录和`starjazz-go`项目设置为`gopath`
 2. 提交代码之前先手动执行`format-src.sh`脚本，该脚本会用`golang`的标准方式格式化代码
 3. 也可以直接在`git`本地的`pre-commit`的`hook`文件中加上上面格式化的脚本，避免每次手动执行
 
@@ -118,9 +118,55 @@
 ## interface
 代码路径：[interfaces.go](https://github.com/cnych/golearn/blob/master/scorpio/src/scorpio/interfaceapp/main.go)
 
-接口是什么？`Go`语言没有类和几成的概念。但是`Go`语言有非常灵活的接口概念，通过它可以实现很多面向对象的特性。
+### 接口是什么？
+`Go`语言没有类和几成的概念。但是`Go`语言有非常灵活的接口概念，通过它可以实现很多面向对象的特性。
 接口提供了一种方式来说明对象的行为。
 接口定义了一组方法集，但是这些方法不包含（实现代码）：它们没有被实现（它们是抽象的）。接口里也不能包含变量。
+有的时候，也会以一种稍微不同的方式来使用接口这个词：从某个类型的角度来看，它的接口指的是：它的所有导出方法，只不过没有显式地为这些导出方法额外定一个接口而已。
+
+### 接口嵌套接口
+一个接口可以包含一个或者多个其他的接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。
+
+比如接口`File`包含了`ReadWrite`和`Lock`的所有方法，它还额外有一个`Close`方法。
+
+```go
+type ReadWrite interface {
+    Read(b Buffer) bool
+    Write(b Buffer) bool
+}
+
+type Lock interface {
+    Lock()
+    Unlock()
+}
+
+type File interface {
+    ReadWrite
+    Lock
+    Close()
+}
+```
+
+### 类型转换
+一个接口类型的变量`varI`中可以包含任何类型的值，必须有一种方式来检测它的**动态**类型，即运行时在变量中存储的值的实际类型。
+在执行过程中动态类型可能会有所不同，但是它总是可以分配给接口变量本省的类型。通常我们可以使用**类型断言**来测试在某个时刻`varI`是否包含类型`T`的值：
+
+```go
+    v := varI.(T)  // unchecked type assertion
+```
+**varI 必须是一个接口变量**，否则编译器会报错：`invalid type assertion: varI.(T) (non-interface type (type of varI) on left)`。
+
+类型断言可能是无效的，虽然编译器会尽力检查转换是否有效，但是它不可能预见所有的可能性。如果转换在程序运行时失败会导致错误发生。更安全的方式是使用以下形式来进行类型断言：
+```go
+    if v, ok := varI.(T); ok {  // checked type assertion
+        Process(v)
+        return
+    }
+    // varI is not of type T
+```
+如果转换合法，`v`是`varI`转换到类型`T`的值，`ok`会是`true`；否则`v`是类型`T`的零值，`ok`是`false`，也没有运行时错误发生。
+
+**应该总是使用上面的方式来进行类型断言。**
 
 ## grpc
 > 参考资料: [grpc](http://www.jianshu.com/p/774b38306c30) [grpc-api](https://xiequan.info/go%E4%BD%BF%E7%94%A8grpc%E4%B8%8Eprotocol-buffers%E6%9E%84%E5%BB%BA%E9%AB%98%E6%80%A7%E8%83%BDapi-%E6%9C%8D%E5%8A%A1/)

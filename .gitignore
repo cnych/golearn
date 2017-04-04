@@ -26,10 +26,8 @@ _testmain.go
 
 # Project
 scorpio/bin/
-stardustx/bin/
 scorpio/pkg/
-stardustx/pkg/
-
+starjazz-go/
 
 *.iml
 local_*

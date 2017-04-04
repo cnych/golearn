@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"stardust/mathx"
+	"starjazz/mathx"
 )
 
 func main() {

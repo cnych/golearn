@@ -6,7 +6,7 @@ import (
 	"google.golang.org/grpc/reflection"
 	"net"
 	pb "scorpio/grpcapp/helloworld/helloworld"
-	"stardust/logx"
+	"starjazz/logx"
 )
 
 const (

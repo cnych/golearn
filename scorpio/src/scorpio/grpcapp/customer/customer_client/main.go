@@ -5,7 +5,7 @@ import (
 	"google.golang.org/grpc"
 	"io"
 	pb "scorpio/grpcapp/customer"
-	"stardust/logx"
+	"starjazz/logx"
 )
 
 const (
